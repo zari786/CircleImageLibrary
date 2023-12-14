@@ -1,7 +1,15 @@
 plugins {
     id("com.android.library")
     id("org.jetbrains.kotlin.android")
-    `maven-publish`
+    id("maven-publish")
+}
+
+buildscript {
+    repositories {
+        google()
+        mavenCentral()
+        mavenLocal()            // << --- ADD This
+    }
 }
 
 android {
@@ -54,6 +62,9 @@ publishing {
                 from(components["release"])
             }
         }
+    }
+    repositories {               // << --- ADD This
+        mavenLocal()
     }
 }
 
